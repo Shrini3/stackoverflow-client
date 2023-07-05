@@ -28,6 +28,103 @@
   width: 17px;
 }
 
-.signup-btn {
+.logout-btn, .signup-btn{
   margin-left: auto; 
+}
+
+.profile-icon {
+  background-color: blue;
+  color: white;
+  width: 20px;
+  text-align: center;
+  border-radius: 70%;
+  margin-left: auto;
+}
+
+.signup-form, .login-form {
+  display: flex;
+  flex-direction: column;
+  max-height: 70%;
+  max-width: 400px;
+  margin: 100px auto;
+  box-shadow: 0 1px 2px 1px gray;
+}
+
+.signup-form > label, .signup-form > input, .login-form > label, .login-form > input{
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.signup-form > button, .login-form > button {
+  width: 80%;
+  height: 35px;
+  color: white;
+  background-color: blue;
+  border-color: transparent;
+  margin: 15px auto;
+  border-radius: 5px;
+}
+
+.homepage {
+  display: flex;
+}
+
+.left-sidebar {
+  max-width: 150px;
+  padding-top: 50px;
+  height: 100vh;
+  box-shadow: 2px 0 rgba(225, 222, 222, 0.766);
+}
+
+.left-sidebar-1 {
+  max-width: inherit;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+
+.left-sidebar-1 > a {
+  text-decoration: none;
+  color: black;
+  
+}
+
+.left-sidebar-2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.left-sidebar-2 > a {
+  margin: 10px 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.active-link {
+  font-weight: bold; 
+  background-color: rgb(229, 233, 236);
+}
+
+.rightside-bar {
+  max-width: 200px;
+  float: right; 
+  margin-left: auto;
+  padding: 5px;
+}
+
+.rightside-bar-widget {
+  border-color: 1px solid rgb(221, 221, 154);
+}
+
+.rightside-bar-widget > h5 {
+  background-color: rgb(214, 219, 83);
+  margin: 0;
+  padding: 10px;
+}
+
+.rightside-bar-widget > p {
+  background-color: rgb(244, 201, 102);
+  margin: 0;
+  padding: 10px;
+  font-size: 13px;
 }
