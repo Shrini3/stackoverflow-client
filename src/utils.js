@@ -13,7 +13,7 @@ export async function checkToken() {
         window.location.href = "/authlogin"
     } else if (Date.now() / 1000 > expiresAt) {
         console.log('Token has expired');
-        const response = await axios.get("http://localhost:5001/refreshtoken", {
+        const response = await axios.get("http://stackoverflow-server-production.up.railway.app:5001/refreshtoken", {
             headers: {
                 'Authorization' : `Bearer ${token} RefreshToken ${refresh_token}`
             }

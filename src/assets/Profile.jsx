@@ -11,7 +11,7 @@ export default function Profile() {
     async function userProfileData(name) {
         try {
             await checkToken()
-            const response = await axios.get("http://localhost:5001/getuserdata", {
+            const response = await axios.get("http://stackoverflow-server-production.up.railway.app:5001/getuserdata", {
                 params: {
                     username: name
                 },

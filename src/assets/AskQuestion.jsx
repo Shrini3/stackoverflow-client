@@ -60,7 +60,7 @@ export default function AskQuestion() {
     }
 
     function postQuestion(data) {
-        axios.post("http://localhost:5001/postquestion", data)
+        axios.post("http://stackoverflow-server-production.up.railway.app:5001/postquestion", data)
         .then(res => {
             console.log(res.data)
         }).then(() => {

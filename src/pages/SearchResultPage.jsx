@@ -11,7 +11,7 @@ export default function SearchResultPage() {
     const [filter, setFilter] = useState('latest');
 
     function getQuestions() {
-        axios.get("http://localhost:5001/api/search", {
+        axios.get("http://stackoverflow-server-production.up.railway.app:5001/api/search", {
             params : {
                 searchquery: searchParams.get("searchtag")
             }

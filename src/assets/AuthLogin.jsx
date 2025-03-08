@@ -40,7 +40,7 @@ export default function AuthLogin() {
     }
 
     function login(logindata) {
-        axios.post("http://localhost:5001/login", logindata)
+        axios.post("http://stackoverflow-server-production.up.railway.app:5001/login", logindata)
         .then(res => {
             console.log(res.data)
             localStorage.setItem("Token", res.data.token)

@@ -35,7 +35,7 @@ export default function Auth() {
     }
 
     function signinfunc(signindata) {
-        axios.post(`http://localhost:5001/signin`, signindata)
+        axios.post(`http://stackoverflow-server-production.up.railway.app:5001/signin`, signindata)
         .then(res => {
             //console.log(res)
             navigate('/authlogin')

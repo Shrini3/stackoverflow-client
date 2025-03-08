@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export function signinfunc(signindata) {
-    axios.post(`http://localhost:5001/signin`, signindata)
+    axios.post(`http://stackoverflow-server-production.up.railway.app:5001/signin`, signindata)
     .then(res => {
         console.log(res.data)
     })
@@ -11,7 +11,7 @@ export function signinfunc(signindata) {
 }
 
 export function login(logindata) {
-    axios.post("http://localhost:5001/login", logindata)
+    axios.post("http://stackoverflow-server-production.up.railway.app:5001/login", logindata)
     .then(res => {
         console.log(res.data)
     }).catch(err => {
@@ -21,7 +21,7 @@ export function login(logindata) {
 
 export async function userProfileData(name) {
     try {
-        const response = await axios.get("http://localhost:5001/getuserdata", {
+        const response = await axios.get("http://stackoverflow-server-production.up.railway.app:5001/getuserdata", {
             params: {
                 username: name
             }

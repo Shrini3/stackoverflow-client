@@ -8,7 +8,7 @@ export default function Profile() {
 
     async function userProfileData(name) {
         try {
-            const response = await axios.get("http://localhost:5001/getuserprofile", {
+            const response = await axios.get("http://stackoverflow-server-production.up.railway.app:5001/getuserprofile", {
                 params: {
                     uname: name
                 }

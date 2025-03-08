@@ -14,7 +14,7 @@ function AnswerQuestion() {
 
     function getQuestionData(id) {
 
-        axios.get("http://localhost:5001/getquestiondata", {
+        axios.get("http://stackoverflow-server-production.up.railway.app:5001/getquestiondata", {
             params: {
                 questionid: id
             }
@@ -47,7 +47,7 @@ function AnswerQuestion() {
     }
 
     function postAnswer(html) {
-        axios.post("http://localhost:5001/api/postanswer", {
+        axios.post("http://stackoverflow-server-production.up.railway.app:5001/api/postanswer", {
             username: localStorage.getItem("username"),
             questionId: params.qid,
             ansbody: html

@@ -9,7 +9,7 @@ export default function HomeQuestions() {
     const [filter, setFilter] = useState('latest');
 
     function getQuestions(userName) {
-        axios.get("http://localhost:5001/myquestions", { 
+        axios.get("http://stackoverflow-server-production.up.railway.app:5001/myquestions", { 
             params: {
                 username: userName
             }

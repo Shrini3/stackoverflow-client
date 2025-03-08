@@ -10,7 +10,7 @@ export default function HomePage() {
     const [filter, setFilter] = useState('latest');
 
     function getQuestions() {
-        axios.get("http://localhost:5001/api/getallquestions")
+        axios.get("http://stackoverflow-server-production.up.railway.app:5001/api/getallquestions")
         .then(res => {
             console.log(res.data)
             setQuestionArray(res.data)

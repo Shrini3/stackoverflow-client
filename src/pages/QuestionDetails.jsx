@@ -11,7 +11,7 @@ export default function QuestionDetails() {
 
     function getQuestionData(qid) {
 
-        axios.get("http://localhost:5001/getquestiondata", {
+        axios.get("http://stackoverflow-server-production.up.railway.app:5001/getquestiondata", {
             params: {
                 questionid: qid
             }
@@ -34,7 +34,7 @@ export default function QuestionDetails() {
         if(commentContent.length < 10) {
 
         } else {
-            axios.post("http://localhost:5001/postcomment", {
+            axios.post("http://stackoverflow-server-production.up.railway.app:5001/postcomment", {
                 comment: commentContent, 
                 userID: qdata.userid, 
                 username: localStorage.getItem("username"), 
@@ -57,7 +57,7 @@ export default function QuestionDetails() {
 
     function upvote(aid) {
         if(localStorage.getItem("reputation") >= 50) {
-            axios.post("http://localhost:5001/api/upvote", {
+            axios.post("http://stackoverflow-server-production.up.railway.app:5001/api/upvote", {
                 qid : params.id,
                 ansid : (aid) ? aid : "",
                 username: localStorage.getItem("username")
@@ -79,7 +79,7 @@ export default function QuestionDetails() {
 
     function downvote(aid) {
         if(localStorage.getItem("reputation") >= 50) {
-            axios.post("http://localhost:5001/api/downvote", {
+            axios.post("http://stackoverflow-server-production.up.railway.app:5001/api/downvote", {
                 qid: params.id,
                 ansid: (aid) ? aid : "",
                 username: localStorage.getItem("username")
