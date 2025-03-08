@@ -54,6 +54,17 @@
   width: 17px;
 }
 
+.search-info-div {
+  position: fixed;
+  top: 55px;
+  right: 30vw;
+  z-index: 1000;
+  border: 1px solid black;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
 .logout-btn, .signup-btn{
   right: 10px;
 }
@@ -225,6 +236,24 @@
 
 .homequestions-top > button:hover {
   background-color: rgb(3, 3, 197);
+}
+
+.homequestions-top-filterdiv {
+  margin: 10px 0;
+}
+
+.homequestions-top-filterdiv > button {
+  margin: 0 5px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: none;
+  border-color: black;
+  padding: 4px 4px;
+}
+
+.homequestions-top-filterdiv > button:hover {
+  color: white;
+  background-color: black;
 }
 
 .question-bar {

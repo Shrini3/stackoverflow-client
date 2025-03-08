@@ -6,6 +6,7 @@ export default function HomeQuestions() {
     const navigate = useNavigate()
 
     const [questionArray, setQuestionArray] = useState([])
+    const [filter, setFilter] = useState('latest');
 
     function getQuestions(userName) {
         axios.get("http://localhost:5001/myquestions", { 
@@ -39,16 +40,54 @@ export default function HomeQuestions() {
     function navigateToAskQuestion() {
         navigate("/ask")
     }
+
+    function getFilteredItems() {
+        switch (filter) {
+            case 'latest':
+                return [...questionArray].sort((a, b) => new Date(b.askedOn.substring(0, 10)) - new Date(a.askedOn.substring(0, 10)));
+            case 'oldest':
+                return [...questionArray].sort((a, b) => new Date(a.askedOn.substring(0, 10)) - new Date(b.askedOn.substring(0, 10)));
+            case 'popular':
+                return [...questionArray].sort((a, b) => (b.upvotes + b.downvotes) - (a.upvotes + a.downvotes));
+            default:
+                return questionArray;
+        }
+    }
+
+    const filteredItems = getFilteredItems()
     
     return (
         questionArray.length === 0 ? navigate("/auth") :
         <section className="homequestions">
             <div className="homequestions-top">
-                <h2>Top questions</h2>
+                <h2>Your Questions</h2>
                 <button onClick={navigateToAskQuestion}>Ask Question</button>
             </div>
+            <div className="homequestions-top-filterdiv">
+                <button 
+                    onClick={() => setFilter('latest')}
+                    style={{
+                        backgroundColor: filter === 'latest' ? 'black' : 'white',
+                        color: filter === 'latest' ? 'white' : 'black',
+                    }}
+                >Latest</button>
+                <button 
+                    onClick={() => setFilter('oldest')}
+                    style={{
+                        backgroundColor: filter === 'oldest' ? 'black' : 'white',
+                        color: filter === 'oldest' ? 'white' : 'black',
+                    }}
+                >Oldest</button>
+                <button 
+                    onClick={() => setFilter('popular')}
+                    style={{
+                        backgroundColor: filter === 'popular' ? 'black' : 'white',
+                        color: filter === 'popular' ? 'white' : 'black',
+                    }}
+                >Popular</button>
+            </div>
             {
-                questionArray.map(q => {
+                filteredItems.map(q => {
                     return (
                     <section className="question-bar">
                         <div className="question-bar-stats">

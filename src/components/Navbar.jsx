@@ -1,5 +1,6 @@
 import {Link, Outlet, useNavigate} from "react-router-dom"
 import Account from "../assets/AccountProfile"
+import { useState, useRef } from "react"
 //import {useSelector, useDispatch} from "react-redux"
 //import { logout } from "../features/userReducer"
 //import { setCurrentUser } from "../actions/currentUser"
@@ -9,21 +10,39 @@ export default function Navbar() {
     //const dispatch = useDispatch()
     //const user = useSelector((state) => state.user.value)
     //const name = user.username
+    const [searchquery, SetSearchQuery] = useState("")
     const name = localStorage.getItem("username")
-    //console.log(user.username)
+    const searchInstructionDivRef = useRef(null)
 
-    // React.useEffect(()=> {
-    //     dispatch(setCurrentUser(JSON.parse(localStorage.getItem('Profile'))))
-    // },[dispatch])
     const navigate = useNavigate()
     function logout() {
         localStorage.clear()
         navigate("/authlogin")
     }
 
-    // const makenotification = () => {
-    //     toast("make some roar")
-    // }
+    function displaySearchInstruction() {
+        //const ele = document.getElementsByClassName("search-info-div")
+        searchInstructionDivRef.current.style.display = "block"
+        console.log("searchbox")
+        setTimeout(()=> {
+            searchInstructionDivRef.current.style.display = "none"
+        }, 10000)
+    }
+
+    function handleChange(e) {
+        e.preventDefault()
+        SetSearchQuery(e.target.value)
+        console.log(searchquery)
+    }
+
+    function searchOnEnter(e) {
+        if(e.key === 'Enter') {
+            e.preventDefault()
+            console.log(`/search?searchtag=${searchquery}`)
+            navigate(`/search?searchtag=${searchquery}`)
+        }
+        //console.log(searchquery)
+    }
 
     return (
         <div>
@@ -32,12 +51,24 @@ export default function Navbar() {
                 <ToastContainer /> */}
                 <Link to="/" className="logo">Stack Overflow</Link>
                 <Link to="/about">About</Link>
-                <Link>For Teams</Link>
-                <Link>Products</Link>
+                {/* <Link>For Teams</Link>
+                <Link>Products</Link> */}
                 <img src="../../search.png" className="search-img" alt="search-icon"/>
-                <form>
-                    <input type="text" placeholder="Search"></input>
+                <form >
+                    <input 
+                        type="text" 
+                        placeholder="Search" 
+                        value={searchquery} 
+                        onChange={handleChange} 
+                        onKeyDown={searchOnEnter}
+                        onFocus={displaySearchInstruction}
+                        ></input>
                 </form>
+                <div className="search-info-div" style={{display: "none"}} ref = {searchInstructionDivRef}>
+                    <span><strong>[tag]</strong><span> : enter topic tag</span></span>
+                    <br/>
+                    <span><strong>":exact phrase here"</strong><span> : enter search phrase here</span></span>
+                </div>
                 {
                     //user.username 
                     name ? <>
