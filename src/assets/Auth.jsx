@@ -38,7 +38,7 @@ export default function Auth() {
         axios.post(`http://stackoverflow-server-production.up.railway.app:5001/signin`, signindata)
         .then(res => {
             //console.log(res)
-            navigate('/authlogin')
+            navigate('https://glittering-sundae-eaeaf6.netlify.app/authlogin')
         })
         .catch(err => {
             console.log('Error:',err)
